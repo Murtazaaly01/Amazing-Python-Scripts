@@ -18,7 +18,7 @@ def monitor(limit, unit):
     l = []
     for t in output.split():
         try:
-            if t == "MiB" or t == "GiB":
+            if t in ["MiB", "GiB"]:
                 l.append(t)
             else:
                 l.append(float(t))

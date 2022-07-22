@@ -97,13 +97,17 @@ class quiz(tk.Tk):
 
         # displays the category chosen by the user
         self.label_1 = tk.Label(
-            self, text="Category: " + self.category, font=('italics', 13))
+            self, text=f"Category: {self.category}", font=('italics', 13)
+        )
+
         # widget is placed in fixed coordinates and centered
         self.label_1.place(x=450, y=50, anchor="center")
 
         # displays the difficulty level chosen by the user
         self.label_2 = tk.Label(
-            self, text="Difficulty: "+self.difficulty, font=('italics', 12))
+            self, text=f"Difficulty: {self.difficulty}", font=('italics', 12)
+        )
+
         # widget is placed in fixed coordinates and centered
         self.label_2.place(x=450, y=100, anchor="center")
 
@@ -132,7 +136,9 @@ class quiz(tk.Tk):
         if index < 10:
             # label to display question number
             self.label_1 = ttk.Label(
-                self, text="Question "+str(index+1), font=('bold', 11))
+                self, text=f"Question {str(index+1)}", font=('bold', 11)
+            )
+
             self.label_1.place(x=450, y=30, anchor="center")
 
             # a label to display the question text
@@ -217,22 +223,30 @@ class quiz(tk.Tk):
             self.label_1 = tk.Label(
                 self, text="Better Luck Next Time!", font=("bold", 12))
             self.label_2 = tk.Label(
-                self, text="Your Score is: " + str(self.score), font=("bold", 12))
+                self, text=f"Your Score is: {str(self.score)}", font=("bold", 12)
+            )
+
 
         elif self.score == 5:
             self.label_1 = tk.Label(self, text="Not Bad!", font=("bold", 12))
             self.label_2 = tk.Label(
-                self, text="Your Score is: " + str(self.score), font=("bold", 12))
+                self, text=f"Your Score is: {str(self.score)}", font=("bold", 12)
+            )
+
 
         elif self.score < 10 and self.score > 5:
             self.label_1 = tk.Label(self, text="Good Job!", font=("bold", 12))
             self.label_2 = tk.Label(
-                self, text="Your Score is: " + str(self.score), font=("bold", 12))
+                self, text=f"Your Score is: {str(self.score)}", font=("bold", 12)
+            )
+
 
         elif self.score == 10:
             self.label_1 = tk.Label(self, text="Awesome!", font=("bold", 12))
             self.label_2 = tk.Label(
-                self, text="Your Score is: " + str(self.score), font=("bold", 12))
+                self, text=f"Your Score is: {str(self.score)}", font=("bold", 12)
+            )
+
 
         # labels are assigned definite coordinates on the window
         self.label_1.place(x=450, y=70, anchor="center")
@@ -300,10 +314,7 @@ class quiz(tk.Tk):
             incorrect_options[i].append(self.correct_answers[i])
             random.shuffle(incorrect_options[i])
 
-        self.options = []
-        # the
-        for i in range(len(incorrect_options)):
-            self.options.append(incorrect_options[i])
+        self.options = list(incorrect_options)
 
 
 if __name__ == "__main__":

@@ -10,18 +10,18 @@ def writedata(*args, **kwargs):
     data = {}
     global buffer
     updatedbuffer = kwargs.get('buffer', -1)
-    path = kwargs.get('path', None)
-    diff = kwargs.get('diff', None)
+    path = kwargs.get('path')
+    diff = kwargs.get('diff')
     if (updatedbuffer != -1):
         buffer = updatedbuffer
         with open(jsonpath, 'w') as file:
-            json.dump([obj for obj in buffer], file, indent=4)
+            json.dump(list(buffer), file, indent=4)
     elif (path and diff):
         data['path'] = path
         data['changes'] = diff
         buffer.append(data)
         with open(jsonpath, 'w') as file:
-            json.dump([obj for obj in buffer], file, indent=4)
+            json.dump(list(buffer), file, indent=4)
 
 
 def updatedata(filename, diffarr):
